@@ -7,7 +7,11 @@ import com.lezhin.webtoon.webtoonservice.evaluation.application.EvaluationErrorC
 import com.lezhin.webtoon.webtoonservice.evaluation.application.EvaluationException;
 import com.lezhin.webtoon.webtoonservice.evaluation.application.EvaluationService;
 import com.lezhin.webtoon.webtoonservice.evaluation.domain.Evaluation;
+import com.lezhin.webtoon.webtoonservice.user.application.UserErrorCode;
+import com.lezhin.webtoon.webtoonservice.user.application.UserException;
 import com.lezhin.webtoon.webtoonservice.user.domain.User;
+import com.lezhin.webtoon.webtoonservice.webtoon.application.WebtoonErrorCode;
+import com.lezhin.webtoon.webtoonservice.webtoon.application.WebtoonException;
 import com.lezhin.webtoon.webtoonservice.webtoon.domain.Webtoon;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -135,14 +139,14 @@ class EvaluationControllerTest {
         CreateEvaluation.Request request = createEvaluationRequest(userId, webtoonId, evaluationValue, comment);
 
         when(evaluationService.createEvaluation(ArgumentMatchers.any(CreateEvaluation.Request.class)))
-                .thenThrow(new EvaluationException(EvaluationErrorCode.EVALUATION_ERROR_001));
+                .thenThrow(new UserException(UserErrorCode.USER_NOT_FOUND));
 
         mockMvc.perform(post("/api/v1/evaluations")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value(EvaluationErrorCode.EVALUATION_ERROR_001.name()))
-                .andExpect(jsonPath("$.message").value(EvaluationErrorCode.EVALUATION_ERROR_001.getErrorMessage()));
+                .andExpect(jsonPath("$.code").value(UserErrorCode.USER_NOT_FOUND.name()))
+                .andExpect(jsonPath("$.message").value(UserErrorCode.USER_NOT_FOUND.getErrorMessage()));
     }
 
     @DisplayName("존재하지 않는 웹툰 ID로 인한 평가 생성 실패")
@@ -156,14 +160,14 @@ class EvaluationControllerTest {
         CreateEvaluation.Request request = createEvaluationRequest(userId, webtoonId, evaluationValue, comment);
 
         when(evaluationService.createEvaluation(ArgumentMatchers.any(CreateEvaluation.Request.class)))
-                .thenThrow(new EvaluationException(EvaluationErrorCode.EVALUATION_ERROR_002));
+                .thenThrow(new WebtoonException(WebtoonErrorCode.WEBTOON_NOT_FOUND));
 
         mockMvc.perform(post("/api/v1/evaluations")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value(EvaluationErrorCode.EVALUATION_ERROR_002.name()))
-                .andExpect(jsonPath("$.message").value(EvaluationErrorCode.EVALUATION_ERROR_002.getErrorMessage()));
+                .andExpect(jsonPath("$.code").value(WebtoonErrorCode.WEBTOON_NOT_FOUND.name()))
+                .andExpect(jsonPath("$.message").value(WebtoonErrorCode.WEBTOON_NOT_FOUND.getErrorMessage()));
     }
 
     private static CreateEvaluation.Request createEvaluationRequest(long userId,
@@ -189,13 +193,13 @@ class EvaluationControllerTest {
         CreateEvaluation.Request request = createEvaluationRequest(userId, webtoonId, evaluationValue, comment);
 
         when(evaluationService.createEvaluation(ArgumentMatchers.any(CreateEvaluation.Request.class)))
-                .thenThrow(new EvaluationException(EvaluationErrorCode.EVALUATION_ERROR_003));
+                .thenThrow(new EvaluationException(EvaluationErrorCode.ALREADY_EVALUATED));
 
         mockMvc.perform(post("/api/v1/evaluations")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value(EvaluationErrorCode.EVALUATION_ERROR_003.name()))
-                .andExpect(jsonPath("$.message").value(EvaluationErrorCode.EVALUATION_ERROR_003.getErrorMessage()));
+                .andExpect(jsonPath("$.code").value(EvaluationErrorCode.ALREADY_EVALUATED.name()))
+                .andExpect(jsonPath("$.message").value(EvaluationErrorCode.ALREADY_EVALUATED.getErrorMessage()));
     }
 }

@@ -1,10 +1,7 @@
 package com.lezhin.webtoon.webtoonservice.evaluation.api;
 
 import com.lezhin.webtoon.webtoonservice.core.dto.CommonResponse;
-import com.lezhin.webtoon.webtoonservice.core.dto.ArgumentsNotValidResponse;
-import com.lezhin.webtoon.webtoonservice.core.dto.ErrorResponse;
 import com.lezhin.webtoon.webtoonservice.evaluation.api.dto.CreateEvaluation;
-import com.lezhin.webtoon.webtoonservice.evaluation.application.EvaluationException;
 import com.lezhin.webtoon.webtoonservice.evaluation.application.EvaluationService;
 import com.lezhin.webtoon.webtoonservice.evaluation.domain.Evaluation;
 import jakarta.validation.Valid;
@@ -32,15 +29,4 @@ public class EvaluationController {
         );
     }
 
-    @ExceptionHandler(EvaluationException.class)
-    public ResponseEntity<ErrorResponse> handleException(EvaluationException exception) {
-        return new ResponseEntity<>(
-                new ErrorResponse(
-                        exception.getErrorCode().name(),
-                        exception.getMessage()
-                ),
-                HttpStatus.BAD_REQUEST
-        );
-
-    }
 }
