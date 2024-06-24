@@ -24,4 +24,11 @@ public class Evaluation {
     private Webtoon webtoon;
     private boolean evaluationValue;
     private String comment;
+
+    public void evaluate(Boolean evaluationValue) {
+        if (this.evaluationValue == evaluationValue) {
+            throw new EvaluationException(EvaluationErrorCode.ALREADY_EVALUATED);
+        }
+        this.evaluationValue = evaluationValue;
+    }
 }

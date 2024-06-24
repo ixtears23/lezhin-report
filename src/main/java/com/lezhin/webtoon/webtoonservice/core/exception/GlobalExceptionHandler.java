@@ -2,7 +2,7 @@ package com.lezhin.webtoon.webtoonservice.core.exception;
 
 import com.lezhin.webtoon.webtoonservice.core.dto.ArgumentsNotValidResponse;
 import com.lezhin.webtoon.webtoonservice.core.dto.ErrorResponse;
-import com.lezhin.webtoon.webtoonservice.evaluation.application.EvaluationException;
+import com.lezhin.webtoon.webtoonservice.evaluation.domain.EvaluationException;
 import com.lezhin.webtoon.webtoonservice.user.application.UserException;
 import com.lezhin.webtoon.webtoonservice.webtoon.application.WebtoonException;
 import lombok.extern.slf4j.Slf4j;
