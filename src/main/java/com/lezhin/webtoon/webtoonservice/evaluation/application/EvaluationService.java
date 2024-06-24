@@ -5,18 +5,22 @@ import com.lezhin.webtoon.webtoonservice.evaluation.domain.Evaluation;
 import com.lezhin.webtoon.webtoonservice.evaluation.domain.EvaluationErrorCode;
 import com.lezhin.webtoon.webtoonservice.evaluation.domain.EvaluationException;
 import com.lezhin.webtoon.webtoonservice.evaluation.infrastructure.EvaluationJpaRepository;
+import com.lezhin.webtoon.webtoonservice.evaluation.infrastructure.WebtoonEvaluationRepository;
 import com.lezhin.webtoon.webtoonservice.user.application.UserService;
 import com.lezhin.webtoon.webtoonservice.webtoon.application.WebtoonService;
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.Webtoon;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class EvaluationService {
     private final EvaluationJpaRepository evaluationJpaRepository;
+    private final WebtoonEvaluationRepository webtoonEvaluationRepository;
     private final EvaluationMapper evaluationMapper;
     private final UserService userService;
     private final WebtoonService webtoonService;
@@ -42,5 +46,14 @@ public class EvaluationService {
         final Evaluation evaluation = evaluationMapper.toEvaluation(request);
 
         return evaluationJpaRepository.save(evaluation);
+    }
+
+
+    public List<Webtoon> getTopLikedWebtoons() {
+        return webtoonEvaluationRepository.findTop3ByOrderByLikesDesc();
+    }
+
+    public List<Webtoon> getTopDislikedWebtoons() {
+        return webtoonEvaluationRepository.findTop3ByOrderByDislikesDesc();
     }
 }

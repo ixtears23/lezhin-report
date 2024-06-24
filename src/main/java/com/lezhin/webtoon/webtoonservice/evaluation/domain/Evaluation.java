@@ -22,6 +22,7 @@ public class Evaluation {
     @ManyToOne
     @JoinColumn(name = "webtoon_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Webtoon webtoon;
+    @Column(name = "evaluation_value", columnDefinition = "TINYINT")
     private boolean evaluationValue;
     private String comment;
 
