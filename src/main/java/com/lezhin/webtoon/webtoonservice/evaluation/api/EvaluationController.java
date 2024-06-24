@@ -4,11 +4,14 @@ import com.lezhin.webtoon.webtoonservice.core.dto.CommonResponse;
 import com.lezhin.webtoon.webtoonservice.evaluation.api.dto.CreateEvaluation;
 import com.lezhin.webtoon.webtoonservice.evaluation.application.EvaluationService;
 import com.lezhin.webtoon.webtoonservice.evaluation.domain.Evaluation;
+import com.lezhin.webtoon.webtoonservice.query.domain.WebtoonEvaluationView;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController

@@ -3,17 +3,17 @@ package com.lezhin.webtoon.webtoonservice.history.domain;
 import com.lezhin.webtoon.webtoonservice.user.domain.User;
 import com.lezhin.webtoon.webtoonservice.webtoon.domain.Webtoon;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Getter
+@Builder
 @Entity
-@Table(name = "evaluation")
+@Table(name = "webtoon_view_history")
 public class WebtoonViewHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
