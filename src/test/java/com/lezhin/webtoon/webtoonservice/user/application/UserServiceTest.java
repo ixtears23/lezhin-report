@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@Sql("/data/service-test-data.sql")
+@Sql("/data/user-service-data.sql")
 class UserServiceTest {
 
     @Autowired
