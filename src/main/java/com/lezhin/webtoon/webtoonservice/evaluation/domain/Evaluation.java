@@ -3,11 +3,11 @@ package com.lezhin.webtoon.webtoonservice.evaluation.domain;
 import com.lezhin.webtoon.webtoonservice.user.domain.User;
 import com.lezhin.webtoon.webtoonservice.webtoon.domain.Webtoon;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity

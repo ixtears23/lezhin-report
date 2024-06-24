@@ -1,12 +1,12 @@
 package com.lezhin.webtoon.webtoonservice.webtoon.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
+@Builder
+@AllArgsConstructor
 @Getter
 @Entity
 @Table(name = "webtoon")
