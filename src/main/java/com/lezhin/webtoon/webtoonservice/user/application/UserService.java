@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserJpaRepository userJpaRepository;
 
-    public User findByUserId(Long userId) {
+    public User validateUserExists(Long userId) {
         return userJpaRepository.findById(userId)
                 .orElseThrow(() -> new UserException(UserErrorCode.USER_NOT_FOUND));
     }
