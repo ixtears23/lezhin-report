@@ -19,10 +19,10 @@ public class WebtoonViewHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private User user;
     @ManyToOne
-    @JoinColumn(name = "webtoon_id")
+    @JoinColumn(name = "webtoon_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Webtoon webtoon;
     private LocalDateTime viewDate;
 }

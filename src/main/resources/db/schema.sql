@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS evaluation
 CREATE TABLE IF NOT EXISTS webtoon_view_history
 (
     id         BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '조회 이력 ID, 자동 증가',
-    user_id    BIGINT COMMENT '사용자 ID (외래키)',
-    webtoon_id BIGINT COMMENT '웹툰 ID (외래키)',
+    user_id    BIGINT COMMENT '사용자 ID',
+    webtoon_id BIGINT COMMENT '웹툰 ID',
     view_date  TIMESTAMP COMMENT '조회 일시'
 );
 
