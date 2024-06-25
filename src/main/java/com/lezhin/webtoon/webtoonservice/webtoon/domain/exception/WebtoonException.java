@@ -1,4 +1,4 @@
-package com.lezhin.webtoon.webtoonservice.webtoon.application;
+package com.lezhin.webtoon.webtoonservice.webtoon.domain.exception;
 
 import com.lezhin.webtoon.webtoonservice.core.exception.BaseException;
 import lombok.Getter;

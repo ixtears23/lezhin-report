@@ -1,5 +1,7 @@
 package com.lezhin.webtoon.webtoonservice.webtoon.domain;
 
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.exception.WebtoonErrorCode;
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.exception.WebtoonException;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,4 +24,15 @@ public class Webtoon {
     private LocalDate openDate;
     @Enumerated(EnumType.STRING)
     private WebtoonType type;
+
+    public void updateCoin(int newCoin) {
+        validateCoin(newCoin);
+        this.coin = newCoin;
+    }
+
+    private void validateCoin(int coin) {
+        if (coin != 0 && (coin < 100 || coin > 500)) {
+            throw new WebtoonException(WebtoonErrorCode.INVALID_COIN);
+        }
+    }
 }

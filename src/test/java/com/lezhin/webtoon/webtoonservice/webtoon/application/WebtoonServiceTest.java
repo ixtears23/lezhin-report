@@ -1,6 +1,8 @@
 package com.lezhin.webtoon.webtoonservice.webtoon.application;
 
 import com.lezhin.webtoon.webtoonservice.webtoon.domain.Webtoon;
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.exception.WebtoonErrorCode;
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.exception.WebtoonException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

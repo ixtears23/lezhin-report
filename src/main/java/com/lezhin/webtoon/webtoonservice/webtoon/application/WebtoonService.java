@@ -4,7 +4,10 @@ import com.lezhin.webtoon.webtoonservice.history.application.WebtoonViewHistoryS
 import com.lezhin.webtoon.webtoonservice.history.domain.WebtoonViewHistory;
 import com.lezhin.webtoon.webtoonservice.user.application.UserService;
 import com.lezhin.webtoon.webtoonservice.user.domain.User;
+import com.lezhin.webtoon.webtoonservice.webtoon.application.dto.UpdateWebtoonPriceRequest;
 import com.lezhin.webtoon.webtoonservice.webtoon.domain.Webtoon;
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.exception.WebtoonErrorCode;
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.exception.WebtoonException;
 import com.lezhin.webtoon.webtoonservice.webtoon.infrastructure.WebtoonJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -39,4 +42,12 @@ public class WebtoonService {
         return webtoon;
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    public Webtoon updateWebtoonPrice(Long webtoonId, UpdateWebtoonPriceRequest request) {
+        Webtoon webtoon = webtoonJpaRepository.findById(webtoonId)
+                .orElseThrow(() -> new RuntimeException("Webtoon not found"));
+
+        webtoon.updateCoin(request.coin());
+        return webtoon;
+    }
 }

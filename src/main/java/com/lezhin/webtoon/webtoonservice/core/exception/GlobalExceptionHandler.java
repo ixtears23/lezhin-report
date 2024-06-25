@@ -4,7 +4,7 @@ import com.lezhin.webtoon.webtoonservice.core.dto.ArgumentsNotValidResponse;
 import com.lezhin.webtoon.webtoonservice.core.dto.ErrorResponse;
 import com.lezhin.webtoon.webtoonservice.evaluation.domain.EvaluationException;
 import com.lezhin.webtoon.webtoonservice.user.application.UserException;
-import com.lezhin.webtoon.webtoonservice.webtoon.application.WebtoonException;
+import com.lezhin.webtoon.webtoonservice.webtoon.domain.exception.WebtoonException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

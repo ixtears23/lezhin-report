@@ -15,7 +15,9 @@ CREATE TABLE IF NOT EXISTS webtoon
     contents_name VARCHAR(255) NOT NULL COMMENT '작품명',
     author        VARCHAR(255) NOT NULL COMMENT '작가',
     coin          INT          NOT NULL COMMENT '금액',
-    open_date     DATE         NOT NULL COMMENT '서비스 제공일'
+    open_date     DATE         NOT NULL COMMENT '서비스 제공일',
+    type          ENUM('NORMAL', 'ADULT')  NOT NULL COMMENT '유형(NORMAL: 일반, ADULT: 성인)'
+
 );
 
 -- 평가 테이블
