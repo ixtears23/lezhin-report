@@ -20,4 +20,6 @@ public class Webtoon {
     private String author;
     private int coin;
     private LocalDate openDate;
+    @Enumerated(EnumType.STRING)
+    private WebtoonType type;
 }

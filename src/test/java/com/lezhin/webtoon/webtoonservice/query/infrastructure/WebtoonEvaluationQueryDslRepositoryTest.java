@@ -1,7 +1,6 @@
-package com.lezhin.webtoon.webtoonservice.evaluation.infrastructure;
+package com.lezhin.webtoon.webtoonservice.query.infrastructure;
 
 import com.lezhin.webtoon.webtoonservice.core.config.QueryDslConfig;
-import com.lezhin.webtoon.webtoonservice.query.infrastructure.WebtoonEvaluationQueryDslRepository;
 import com.lezhin.webtoon.webtoonservice.query.domain.WebtoonEvaluationView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

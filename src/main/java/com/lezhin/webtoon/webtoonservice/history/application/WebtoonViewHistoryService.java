@@ -1,5 +1,6 @@
 package com.lezhin.webtoon.webtoonservice.history.application;
 
+import com.lezhin.webtoon.webtoonservice.query.domain.AdultWebtoonView;
 import com.lezhin.webtoon.webtoonservice.history.domain.WebtoonViewHistory;
 import com.lezhin.webtoon.webtoonservice.history.infrastructure.WebtoonViewHistoryJpaRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,9 @@ public class WebtoonViewHistoryService {
     @Transactional(rollbackFor = Exception.class)
     public void create(WebtoonViewHistory viewHistory) {
         webtoonViewHistoryJpaRepository.save(viewHistory);
+    }
+
+    public List<AdultWebtoonView> getUsersWithThreeOrMoreAdultWebtoonViews() {
+        return null;
     }
 }
