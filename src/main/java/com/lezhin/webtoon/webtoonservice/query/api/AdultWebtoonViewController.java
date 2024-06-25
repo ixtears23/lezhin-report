@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/webtoons")
 @RestController
@@ -17,8 +19,8 @@ public class AdultWebtoonViewController {
     private final AdultWebtoonViewService adultWebtoonViewService;
 
     @GetMapping("/adult-webtoon-viewers")
-    public ResponseEntity<CommonResponse<AdultWebtoonView>> getAdultWebtoonViewers() {
-        AdultWebtoonView adultWebtoonView = adultWebtoonViewService.getUsersWithThreeOrMoreAdultWebtoonViews();
+    public ResponseEntity<CommonResponse<List<AdultWebtoonView>>> getAdultWebtoonViewers() {
+        List<AdultWebtoonView> adultWebtoonView = adultWebtoonViewService.getUsersWithThreeOrMoreAdultWebtoonViews();
         return new ResponseEntity<>(
                 new CommonResponse<>(
                         "SUCCESS",

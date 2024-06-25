@@ -15,7 +15,7 @@ import static com.lezhin.webtoon.webtoonservice.webtoon.domain.QWebtoon.webtoon;
 
 @RequiredArgsConstructor
 @Repository
-public class WebtoonViewHistoryQueryDslRepository {
+public class AdultWebtoonViewQueryDslRepository {
     private final JPAQueryFactory queryFactory;
 
     public List<AdultWebtoonView> findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime oneWeekAgo) {

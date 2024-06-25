@@ -16,18 +16,18 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@Import({QueryDslConfig.class, WebtoonViewHistoryQueryDslRepository.class})
-class WebtoonViewHistoryQueryDslRepositoryTest {
+@Import({QueryDslConfig.class, AdultWebtoonViewQueryDslRepository.class})
+class AdultWebtoonViewQueryDslRepositoryTest {
 
     @Autowired
-    private WebtoonViewHistoryQueryDslRepository webtoonViewHistoryQueryDslRepository;
+    private AdultWebtoonViewQueryDslRepository adultWebtoonViewQueryDslRepository;
 
     @Test
     @DisplayName("성인 작품을 3개 이상 조회한 사용자가 없는 경우")
     @Sql(scripts = "/data/webtoon-view-history-empty-data.sql")
     @Transactional
     void findUsersWithThreeOrMoreAdultWebtoonViewsNoUsers() {
-        List<AdultWebtoonView> result = webtoonViewHistoryQueryDslRepository.findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime.now().minusWeeks(1));
+        List<AdultWebtoonView> result = adultWebtoonViewQueryDslRepository.findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime.now().minusWeeks(1));
 
         assertThat(result).isEmpty();
     }
@@ -37,7 +37,7 @@ class WebtoonViewHistoryQueryDslRepositoryTest {
     @Sql(scripts = "/data/webtoon-view-history-one-user.sql")
     @Transactional
     void findUsersWithThreeOrMoreAdultWebtoonViewsOneUser() {
-        List<AdultWebtoonView> result = webtoonViewHistoryQueryDslRepository.findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime.now().minusWeeks(1));
+        List<AdultWebtoonView> result = adultWebtoonViewQueryDslRepository.findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime.now().minusWeeks(1));
 
         assertThat(result).hasSize(1);
         assertThat(result.get(0).getUserName()).isEqualTo("홍길동");
@@ -48,7 +48,7 @@ class WebtoonViewHistoryQueryDslRepositoryTest {
     @Sql(scripts = "/data/webtoon-view-history-three-users.sql")
     @Transactional
     void findUsersWithThreeOrMoreAdultWebtoonViewsThreeUsers() {
-        List<AdultWebtoonView> result = webtoonViewHistoryQueryDslRepository.findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime.now().minusWeeks(1));
+        List<AdultWebtoonView> result = adultWebtoonViewQueryDslRepository.findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime.now().minusWeeks(1));
 
         assertThat(result).hasSize(3);
         assertThat(result).extracting("userName").containsExactlyInAnyOrder("홍길동", "이철수", "박영희");
