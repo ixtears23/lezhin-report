@@ -45,7 +45,7 @@ public class WebtoonService {
     @Transactional(rollbackFor = Exception.class)
     public Webtoon updateWebtoonPrice(Long webtoonId, UpdateWebtoonPriceRequest request) {
         Webtoon webtoon = webtoonJpaRepository.findById(webtoonId)
-                .orElseThrow(() -> new RuntimeException("Webtoon not found"));
+                .orElseThrow(() -> new WebtoonException(WebtoonErrorCode.WEBTOON_NOT_FOUND));
 
         webtoon.updateCoin(request.coin());
         return webtoon;

@@ -37,8 +37,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(argumentsNotValidResponseList, HttpStatus.BAD_REQUEST);
     }
 
-
-
     @ExceptionHandler({ EvaluationException.class, UserException.class, WebtoonException.class })
     public ResponseEntity<ErrorResponse> handleApplicationException(BaseException exception) {
         return new ResponseEntity<>(
@@ -48,8 +46,6 @@ public class GlobalExceptionHandler {
                 ),
                 HttpStatus.BAD_REQUEST
         );
-
     }
-
 
 }

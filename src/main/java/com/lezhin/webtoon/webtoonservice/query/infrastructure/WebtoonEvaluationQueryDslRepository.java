@@ -51,7 +51,6 @@ public class WebtoonEvaluationQueryDslRepository {
                 .fetch();
     }
 
-
     public List<WebtoonEvaluationView> findTop3ByOrderByDislikesDesc() {
         return queryFactory
                 .select(Projections.constructor(
