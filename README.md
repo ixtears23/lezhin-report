@@ -1,5 +1,13 @@
 # Webtoon Service
 
+## 개발 환경
+- openJdk21
+- SpringBoot 3.3.1
+- SpringDataJPA 3.3.1
+- querydsl 6.2.1
+- H2 DB
+
+## Project Summary
 - 의존성의 방향은 도메인 중심
 - 양방향 연관관계가 필요한 경우, 이벤트 발행  
 - core : 응답 형식 및 에러 처리의 공통 구현
