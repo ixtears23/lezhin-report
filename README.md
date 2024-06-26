@@ -13,10 +13,10 @@
 - core : 응답 형식 및 에러 처리의 공통 구현
 - 테스트 : 필요에 의한 통합, 단위 테스트, 의미있는 값으로 테스트
 
-모든 API는 다음 Swagger UI에서 테스트 해볼 수 있습니다.  
-http://localhost:8080/swagger-ui.html
 
 ## API List
+모든 API는 다음 Swagger UI에서 테스트 해볼 수 있습니다.  
+http://localhost:8080/swagger-ui.html
 
 ### 1. 특정 사용자가 해당 작품에 대해 평가('좋아요/싫어요', '댓글')을 할 수 있는 API
 > - 작품 당 1개의 평가만 가능하고, 여러 작품에 대해서 평가 가능
