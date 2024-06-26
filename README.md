@@ -28,8 +28,9 @@ http://localhost:8080/swagger-ui.html
   - WebMvc Test - [EvaluationControllerTest](src/test/java/com/lezhin/webtoon/webtoonservice/evaluation/api/EvaluationControllerTest.java)
   - 결정 테이블 테스트 - [EvaluationTest.java](src/test/java/com/lezhin/webtoon/webtoonservice/evaluation/domain/EvaluationTest.java)
 
+
   | 현재 평가 상태 | 새로운 평가 상태 | 허용 여부 | 결과 |  
-      | ------------- | ------------- | -------- | ----- |    
+  | ------------- | ------------- | -------- | ----- |    
   | 좋아요         | 좋아요         | 불허     | X     |  
   | 좋아요         | 싫어요         | 허용     | O     |  
   | 싫어요         | 좋아요         | 허용     | O     |  
