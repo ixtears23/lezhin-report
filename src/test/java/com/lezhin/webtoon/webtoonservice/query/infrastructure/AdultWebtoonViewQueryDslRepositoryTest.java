@@ -40,7 +40,7 @@ class AdultWebtoonViewQueryDslRepositoryTest {
         List<AdultWebtoonView> result = adultWebtoonViewQueryDslRepository.findUsersWithThreeOrMoreAdultWebtoonViews(LocalDateTime.now().minusWeeks(1));
 
         assertThat(result).hasSize(1);
-        assertThat(result.get(0).getUserName()).isEqualTo("홍길동");
+        assertThat(result.getFirst().getUserName()).isEqualTo("홍길동");
     }
 
     @Test
