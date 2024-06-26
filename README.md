@@ -6,7 +6,7 @@
 - SpringDataJPA 3.3.1
 - querydsl 6.2.1
 - H2 DB
-
+> gradle jvm 도 openJdk21 설정
 ## Project Summary
 - 의존성의 방향은 도메인 중심
 - 양방향 연관관계가 필요한 경우, 이벤트 발행  
