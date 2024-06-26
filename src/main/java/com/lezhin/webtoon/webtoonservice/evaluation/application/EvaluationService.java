@@ -6,14 +6,14 @@ import com.lezhin.webtoon.webtoonservice.evaluation.domain.EvaluationErrorCode;
 import com.lezhin.webtoon.webtoonservice.evaluation.domain.EvaluationException;
 import com.lezhin.webtoon.webtoonservice.evaluation.infrastructure.EvaluationJpaRepository;
 import com.lezhin.webtoon.webtoonservice.query.infrastructure.WebtoonEvaluationQueryDslRepository;
-import com.lezhin.webtoon.webtoonservice.query.domain.WebtoonEvaluationView;
 import com.lezhin.webtoon.webtoonservice.user.application.UserService;
+import com.lezhin.webtoon.webtoonservice.user.domain.event.UserDeletedEvent;
 import com.lezhin.webtoon.webtoonservice.webtoon.application.WebtoonService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ public class EvaluationService {
     private final UserService userService;
     private final WebtoonService webtoonService;
 
-    @Transactional(rollbackOn = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public Evaluation createEvaluation(CreateEvaluation.Request request) {
         userService.validateUserExists(request.userId());
         webtoonService.validateWebtoonExists(request.webtoonId());
@@ -48,5 +48,9 @@ public class EvaluationService {
         return evaluationJpaRepository.save(evaluation);
     }
 
+    @EventListener
+    public void handleUserDeletedEvent(UserDeletedEvent event) {
+        evaluationJpaRepository.deleteByUserId(event.getUserId());
+    }
 
 }
